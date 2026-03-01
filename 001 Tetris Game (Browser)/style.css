@@ -1,0 +1,227 @@
+/* Global page styling */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  /* Dark, retro arcade background */
+  background: radial-gradient(circle at top, #1f1f3a 0, #050510 40%, #000 100%);
+  color: #ffffff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  min-height: 100vh;
+
+  /* Center game area horizontally and vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Container that wraps the canvas and score
+   Make sure your HTML uses: <div id="gameContainer" class="game-container"> ... </div>
+*/
+.game-container,
+#gameContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+
+  padding: 20px;
+  border-radius: 12px;
+
+  /* Subtle glassy panel behind the game */
+  background: rgba(10, 10, 30, 0.8);
+  box-shadow:
+    0 0 20px rgba(0, 255, 255, 0.15),
+    0 0 60px rgba(0, 0, 0, 0.9);
+}
+
+/* Tetris canvas styling */
+#tetrisCanvas {
+  /* Dark playfield background; the actual pieces will be drawn in JS */
+  background-color: #0f0f0f;
+
+  /* Optional: faint grid suggestion using background image.
+     The actual crisp grid lines will be drawn in JS. */
+  background-image:
+    linear-gradient(#333 1px, transparent 1px),
+    linear-gradient(90deg, #333 1px, transparent 1px);
+  background-size: 30px 30px;
+
+  /* Retro neon border / glow */
+  border: 2px solid #00ffff;
+  box-shadow:
+    0 0 10px rgba(0, 255, 255, 0.7),
+    0 0 30px rgba(0, 255, 255, 0.35);
+
+  /* Smooth edges on hi‑dpi displays */
+  image-rendering: pixelated;
+}
+
+/* Score display styling */
+#score {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 24px;
+  letter-spacing: 2px;
+  text-align: center;
+
+  color: #00ffff;
+  text-shadow:
+    0 0 4px rgba(0, 255, 255, 0.9),
+    0 0 12px rgba(0, 255, 255, 0.7),
+    0 0 24px rgba(0, 255, 255, 0.4);
+
+  /* Slight padding so it doesn't hug the canvas too tightly */
+  padding-top: 4px;
+}
+
+/* Game over message styling */
+#gameOverMessage {
+  display: none; /* shown only when gameOver = true */
+  margin-top: 8px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 24px;
+  letter-spacing: 3px;
+  text-align: center;
+  color: #ff4d4d;
+  text-shadow:
+    0 0 6px rgba(255, 0, 0, 0.9),
+    0 0 18px rgba(255, 0, 0, 0.6);
+}
+
+/* Controls row (restart + pause) */
+#controlsRow {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+/* Base button styling for main controls */
+#restartButton,
+#pauseButton {
+  padding: 8px 20px;
+  border-radius: 999px;
+  border: 2px solid #00ffff;
+  background: transparent;
+  color: #00ffff;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 16px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.1s ease;
+  box-shadow:
+    0 0 8px rgba(0, 255, 255, 0.4),
+    0 0 16px rgba(0, 255, 255, 0.25);
+}
+
+#restartButton:hover,
+#pauseButton:hover {
+  background: rgba(0, 255, 255, 0.15);
+  box-shadow:
+    0 0 14px rgba(0, 255, 255, 0.8),
+    0 0 30px rgba(0, 255, 255, 0.6);
+  transform: translateY(-1px);
+}
+
+#restartButton:active,
+#pauseButton:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow:
+    0 0 6px rgba(0, 255, 255, 0.7),
+    0 0 16px rgba(0, 255, 255, 0.5);
+}
+
+/* Speed controls container */
+#speedControls {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Speed text label */
+#speedLevel {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 16px;
+  color: #00ffff;
+  text-shadow:
+    0 0 4px rgba(0, 255, 255, 0.6),
+    0 0 10px rgba(0, 255, 255, 0.4);
+}
+
+/* Speed buttons row */
+#speedButtons {
+  display: flex;
+  gap: 8px;
+}
+
+/* Smaller variant buttons for speed control */
+#speedDown,
+#speedUp {
+  padding: 4px 12px;
+  border-radius: 16px;
+  border: 1px solid #00ffff;
+  background: transparent;
+  color: #00ffff;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 14px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.1s ease;
+  box-shadow:
+    0 0 4px rgba(0, 255, 255, 0.4),
+    0 0 10px rgba(0, 255, 255, 0.25);
+}
+
+#speedDown:hover,
+#speedUp:hover {
+  background: rgba(0, 255, 255, 0.1);
+  box-shadow:
+    0 0 10px rgba(0, 255, 255, 0.8),
+    0 0 20px rgba(0, 255, 255, 0.6);
+  transform: translateY(-1px);
+}
+
+#speedDown:active,
+#speedUp:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow:
+    0 0 4px rgba(0, 255, 255, 0.7),
+    0 0 12px rgba(0, 255, 255, 0.5);
+}
+
+/* Basic responsiveness: keep a comfortable max width and scale on small screens */
+@media (max-width: 480px) {
+  body {
+    padding: 16px;
+  }
+
+  .game-container,
+  #gameContainer {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  #tetrisCanvas {
+    /* Scale the playfield down on very small screens while keeping aspect ratio */
+    transform: scale(0.8);
+    transform-origin: top center;
+  }
+
+  #score {
+    font-size: 20px;
+  }
+}

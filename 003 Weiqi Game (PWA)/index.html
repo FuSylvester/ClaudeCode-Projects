@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weiqi (Go) Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- Game Title -->
+        <h1>🎮 Weiqi (Go) Game</h1>
+
+        <!-- Score Board -->
+        <div class="score-board">
+            <div class="score">
+                <span class="player-label">You (Black)</span>
+                <span id="black-score">0</span> stones
+            </div>
+            <div class="score">
+                <span class="player-label">Computer (White)</span>
+                <span id="white-score">0</span> stones
+            </div>
+        </div>
+
+        <!-- The Game Board -->
+        <div id="board-container" class="board-container">
+            <canvas id="board" width="600" height="600"></canvas>
+        </div>
+
+        <!-- Game Status -->
+        <div id="game-status" class="game-status">
+            Click "Start Game" to play!
+        </div>
+
+        <!-- Control Buttons -->
+        <div class="controls">
+            <button id="start-btn" class="btn">🚀 Start Game</button>
+            <button id="restart-btn" class="btn" disabled>🔄 New Game</button>
+            <button id="give-up-btn" class="btn" style="background: #ff6b6b;">🏳️ Give Up</button>
+        </div>
+
+        <!-- Last move indicator -->
+        <div id="last-move" class="last-move"></div>
+    </div>
+
+    <!-- Simple explanation at the bottom -->
+    <div class="instructions">
+        <h3>📖 How to Play:</h3>
+        <ol>
+            <li>Click "Start Game"</li>
+            <li>Click any square to place your black stone</li>
+            <li>The computer will play white stones</li>
+            <li>Fill more squares than the computer to win!</li>
+        </ol>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>

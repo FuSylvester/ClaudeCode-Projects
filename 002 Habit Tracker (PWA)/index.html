@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Habit Tracker PWA</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="manifest" href="manifest.webmanifest" />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1 class="app-title">Habit Flow</h1>
+      <nav class="app-nav">
+        <button id="nav-today" class="nav-button nav-button--active">Today</button>
+        <button id="nav-stats" class="nav-button">Stats</button>
+      </nav>
+    </header>
+
+    <div id="reminder-banner" class="reminder-banner reminder-banner--hidden">
+      You still have habits to complete today.
+    </div>
+
+    <main class="app-main">
+      <section id="today-view" class="view view--active" aria-label="Today">
+        <div class="view-header">
+          <h2>Today&apos;s Habits</h2>
+          <button id="open-habit-form" class="primary-button">Add Habit</button>
+        </div>
+        <div id="today-habits" class="habit-list">
+          <!-- Populated by JavaScript -->
+        </div>
+      </section>
+
+      <section id="stats-view" class="view" aria-label="Statistics">
+        <div class="view-header">
+          <h2>Stats</h2>
+        </div>
+        <div id="stats-content" class="stats-content">
+          <!-- Populated by JavaScript -->
+        </div>
+      </section>
+    </main>
+
+    <div id="habit-form-backdrop" class="modal-backdrop modal-backdrop--hidden">
+      <section id="habit-form-modal" class="modal" aria-label="Habit form">
+        <header class="modal-header">
+          <h2 id="habit-form-title">Add Habit</h2>
+        </header>
+        <form id="habit-form" class="modal-body">
+          <label class="form-field">
+            <span class="form-label">Name</span>
+            <input
+              id="habit-name-input"
+              type="text"
+              name="name"
+              required
+              maxlength="80"
+              placeholder="e.g. Drink water"
+            />
+          </label>
+
+          <label class="form-field">
+            <span class="form-label">Description (optional)</span>
+            <input
+              id="habit-description-input"
+              type="text"
+              name="description"
+              maxlength="140"
+              placeholder="Short note about this habit"
+            />
+          </label>
+
+          <label class="form-field">
+            <span class="form-label">Target days per week</span>
+            <input
+              id="habit-target-input"
+              type="number"
+              name="targetDaysPerWeek"
+              min="1"
+              max="7"
+              value="7"
+            />
+          </label>
+
+          <label class="form-field">
+            <span class="form-label">Color</span>
+            <input
+              id="habit-color-input"
+              type="color"
+              name="color"
+              value="#4f46e5"
+            />
+          </label>
+
+          <div class="form-actions">
+            <button type="button" id="cancel-habit-form" class="secondary-button">
+              Cancel
+            </button>
+            <button type="submit" class="primary-button">
+              Save
+            </button>
+          </div>
+        </form>
+      </section>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
+
